@@ -4,9 +4,9 @@ FROM nginx:stable
 RUN mkdir -p /logs
 
 # CONF
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/symfony.conf /etc/nginx/symfony.conf
+COPY .docker/nginx/conf/nginx.conf /etc/nginx/nginx.conf
+COPY .docker/nginx/conf/parameters.conf /etc/nginx/parameters.conf
 
 # SSL CERTIFICATES
-COPY nginx/modulo.local.crt /etc/nginx/ssl/modulo.local.crt
-COPY nginx/modulo.local.key /etc/nginx/ssl/modulo.local.key
+COPY certs/modulo.local.crt /etc/nginx/ssl/modulo.local.crt
+COPY certs/modulo.local.key /etc/nginx/ssl/modulo.local.key
