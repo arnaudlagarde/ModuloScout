@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block bodyClass %}with-bg{% endblock %}
+
+{% block body %}
+  <div class="limited-container flex flex--vertical-around">
+    <div class="login-block">
+      <h1>{{ 'Login to app %appName%'|trans({ '%appName%': appName }) }}</h1>
+
+      <form action="{{ path('login') }}" method="post">
+        <div class="form-field">
+          <label class="sr-only" for="uuid">{{ 'Member number'|trans }}</label>
+          <input placeholder="{{ 'Member number'|trans }}" type="text" id="uuid" name="uuid" value="{{ last_uuid }}"/>
+        </div>
+
+        <div class="form-field">
+          <label class="sr-only" for="password">{{ 'Password'|trans }}</label>
+          <input placeholder="{{ 'Password'|trans }}" type="password" id="password" name="password"/>
+        </div>
+
+        <div class="form-field">
+          <button class="btn" type="submit">{{ 'Connection'|trans }}</button>
+        </div>
+
+        {# If you want to control the URL the user is redirected to on success
+            <input type="hidden" name="_target_path" value="/account"/> #}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      </form>
+
+      {% block flashMessages %}{{ parent() }}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

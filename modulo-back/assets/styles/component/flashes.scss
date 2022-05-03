@@ -1,0 +1,29 @@
+.flash-messages {
+  font-size: 1.4rem;
+
+  > .messages {
+    padding-left: 0;
+    margin: 20px 0;
+    list-style: none;
+
+    > .message {
+      background: transparentize($color-bg-light, 0.5);
+      padding: 10px;
+      color: $color-text-dark;
+
+      > p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &--error {
+      > .message {
+        color: $color-error;
+      }
+    }
+
+    > .message {
+      display: list-item;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+h1 {
+  font-size: 3rem;
+  color: $color-text-dark;
+
+  .limited-container & {
+    margin-top: 0;
+  }
+}

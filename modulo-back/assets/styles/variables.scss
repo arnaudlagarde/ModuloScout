@@ -1,0 +1,37 @@
+/* all used colors */
+$color-amaranth-purple: #b6244f;
+$color-baltic-sea: #2a2630;
+$color-black: #000000;
+$color-blue-crayola: #3772ff;
+$color-silver: #c6c5b9;
+$color-sunray: #edae49;
+$color-valencia: #d84437;
+$color-xiketic: #1a1423;
+$color-white: #ffffff;
+
+/* theme colors */
+$color-primary: $color-blue-crayola;
+$color-secondary: $color-amaranth-purple;
+$color-dark: $color-baltic-sea;
+$color-light: $color-white;
+$color-highlight: $color-sunray;
+
+/* Text colors */
+$color-text-dark: $color-dark;
+$color-text-light: $color-light;
+$color-error: $color-valencia;
+
+/* Background colors */
+$color-bg-light: $color-light;
+$color-bg-primary: $color-primary;
+$color-bg-secondary: $color-secondary;
+
+/* Fonts */
+$font-primary: 'Jost', sans-serif;
+
+/* Sizes */
+$limited-width: 500px;
+
+/* Misc */
+$default-radius: 10px;
+$default-spacing: 50px;

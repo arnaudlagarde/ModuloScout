@@ -1,0 +1,29 @@
+{% block subject %}
+  {{ appName }} : compte utilisateur }}
+{% endblock %}
+
+{% block text %}
+  Bonjour {{ firstName }},
+
+  Votre accès est opérationnel sur l'application {{ appName }}, voici vos identifiants :
+
+  Login: {{ uuid }}
+  Mot de passe: {{ password }}
+
+  Vous pouvez vous connecter en utilisant ce lien : {{ absolute_url(path('login')) }}
+{% endblock %}
+
+{% block html %}
+  <p>Bonjour {{ firstName }},</p>
+
+  <p>Votre accès est opérationnel sur l'application {{ appName }}, voici vos identifiants :</p>
+
+  <p>
+    Login: {{ uuid }}<br />
+    Mot de passe: {{ password }}
+  </p>
+
+  <p>
+    Vous pouvez vous connecter en utilisant <a href="{{ absolute_url(path('login')) }}" target="_blank">ce lien</a>
+  </p>
+{% endblock %}

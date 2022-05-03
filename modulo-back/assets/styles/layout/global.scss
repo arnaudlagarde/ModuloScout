@@ -1,0 +1,39 @@
+$color-gradient-1: lighten(transparentize($color-secondary, 0.15), 20);
+$color-gradient-2: lighten(transparentize($color-primary, 0.15), 10);
+
+html {
+  font-size: 62.5%;
+  font-family: $font-primary;
+}
+
+body {
+  margin: 0;
+
+  &.with-bg {
+    height: 100vh;
+
+    @include after() {
+      background: linear-gradient(-45deg, $color-gradient-1 10%, $color-gradient-2 80%) no-repeat, url(/assets/pictures/home-background.png) center;
+      background-size: cover;
+      opacity: 0.8;
+    }
+  }
+}
+
+.limited-container {
+  height: 100%;
+  max-width: $limited-width;
+  margin: 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
