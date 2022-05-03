@@ -1,0 +1,46 @@
+version: '3.4'
+
+networks:
+  modulo-network:
+    driver: bridge
+
+services:
+  mariadb-modulo-service:
+    image: mariadb:10.8
+    container_name: mariadb-modulo-container
+    ports:
+      - "4306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/dev/mariadb:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: modulo
+      MYSQL_USER: modulo_admin
+      MYSQL_PASSWORD: modulo
+    networks:
+      - modulo-network
+
+  pma-modulo-service:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma-modulo-container
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      PMA_HOST: mariadb-modulo-service
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PMA_PMADB: phpmyadmin
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - modulo-network
+
+  mailhog-modulo-service:
+    image: mailhog/mailhog
+    container_name: mailhog-modulo-container
+    ports:
+      - "1080:80"
+    networks:
+      - modulo-network

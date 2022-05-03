@@ -1,0 +1,50 @@
+version: '3.4'
+
+networks:
+  modulo-network:
+    driver: bridge
+
+services:
+  nginx-modulo-service:
+    image: nginx:stable-alpine
+    container_name: nginx-modulo-container
+    ports:
+      - "80:80"
+    volumes:
+      - ./api/:/app
+      - ./docker/dev/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      VIRTUAL_HOST: modulo.co
+      VIRTUAL_PORT: 3000
+    depends_on:
+      - php-modulo-service
+      - mariadb-modulo-service
+    networks:
+      - modulo-network
+
+  node-modulo-service:
+    build:
+      context: ./docker/dev/node
+    container_name: node-modulo-container
+    entrypoint: [ "/bin/bash", "-c", "yarn install && yarn start" ]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/:/app
+    environment:
+      VIRTUAL_HOST: modulo.co
+      VIRTUAL_PORT: 3000
+    working_dir: /app
+    networks:
+      - modulo-network
+
+  php-modulo-service:
+    build:
+      context: ./docker/dev/php
+    container_name: php-modulo-container
+    ports:
+      - "9000:9001"
+    volumes:
+      - ./api/:/app
+    networks:
+      - modulo-network
