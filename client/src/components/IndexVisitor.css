@@ -1,0 +1,13 @@
+.IndexVisitor {
+    padding: 10%;
+    text-align: center;
+    background:linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5)),url(../assets/home-background.png) no-repeat center center fixed;
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+    height: 100%;
+    width: '100vw';
+    height: '100vh';
+    color: white;
+}

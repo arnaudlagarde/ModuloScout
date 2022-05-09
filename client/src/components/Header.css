@@ -1,0 +1,13 @@
+.Header {
+    width: 100vw;
+    height: 8rem;
+    padding: 1rem;
+}
+
+.Header-logo {
+    height: 6rem;
+}
+
+.Header ul li a {
+    color: #00395C !important;
+}
