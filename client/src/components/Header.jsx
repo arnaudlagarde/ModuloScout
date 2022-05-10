@@ -12,7 +12,7 @@ function Header() {
     return (
         <div className='Header'>
             <nav class="navbar navbar-expand-lg navbar-light">
-            <img className="Header-logo" src={ImgScout} alt="logo" />
+                <a href='.././App.jsx'><img className="Header-logo" src={ImgScout} alt="logo" /></a>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
