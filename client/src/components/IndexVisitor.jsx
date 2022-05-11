@@ -7,7 +7,7 @@ function IndexVisitor() {
     return (
         <div className='IndexVisitor'>
             <h1>Bienvenue sur ModuloScout !</h1>
-            <h2>Veuillez vous connecter afin d'accéder à votre espace.</h2>
+            <h2>Veuillez vous connecter pour accéder à votre espace.</h2>
             <h3>Pas encore de compte ? S'inscrire</h3>
         </div>
     );

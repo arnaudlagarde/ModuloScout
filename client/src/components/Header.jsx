@@ -1,6 +1,7 @@
 // Pour les composants React, toujours commencer par importer la librairie afin d'utiliser toutes ses fonctionnalités :
 import React from 'react';
 import './Header.css';
+import { NavLink } from 'react-router-dom';
 import ImgScout from '.././assets/logoScout.png'
 import { render } from "react-dom";
 
@@ -12,7 +13,7 @@ function Header() {
     return (
         <div className='Header'>
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a href='.././App.jsx'><img className="Header-logo" src={ImgScout} alt="logo" /></a>
+                <NavLink className="nav-link" to="/"><img className="Header-logo" src={ImgScout} alt="logo" /></NavLink>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -25,10 +26,10 @@ function Header() {
                             <a class="nav-link" href="#">Messagerie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Connexion</a>
+                            <NavLink className="nav-link" to="/login">Connexion</NavLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inscription</a>
+                            <NavLink className="nav-link" to="/register">Inscription</NavLink>
                         </li>
                     </ul>
                 </div>
