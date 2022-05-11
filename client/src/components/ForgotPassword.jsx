@@ -1,7 +1,6 @@
 // Pour les composants React, toujours commencer par importer la librairie afin d'utiliser toutes ses fonctionnalités :
 import React from 'react';
 import './ForgotPassword.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ForgotPassword() {
     return (
