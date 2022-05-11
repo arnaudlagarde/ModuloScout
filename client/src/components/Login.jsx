@@ -28,9 +28,6 @@ function Login() {
 
                     <button type="button" class="btn btn-primary btn-block mb-4">Connexion</button>
 
-                    <div class="text-center">
-                        <p>Vous n'êtes pas membre ? <a><Link to="/register">S'inscrire</Link></a></p>
-                    </div>
                 </form>
             </div>
         </div>

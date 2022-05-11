@@ -4,7 +4,6 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import IndexVisitor from './components/IndexVisitor';
 import Login from './components/Login';
-import Register from './components/Register';
 import ForgotPassword from './components/ForgotPassword';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +17,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={IndexVisitor} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
         </Switch>
         <Footer />

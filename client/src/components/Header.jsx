@@ -28,9 +28,6 @@ function Header() {
                         <li class="nav-item">
                             <NavLink className="nav-link" to="/login">Connexion</NavLink>
                         </li>
-                        <li class="nav-item">
-                            <NavLink className="nav-link" to="/register">Inscription</NavLink>
-                        </li>
                     </ul>
                 </div>
             </nav>
