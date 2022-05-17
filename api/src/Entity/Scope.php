@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ScopeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
 
@@ -28,11 +30,15 @@ class Scope
     #[ORM\Column(type: 'boolean')]
     private bool $active = true;
 
+    #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'invitedScope')]
+    private $invitedTo;
+
     #[Pure] public function __construct(User $user, Structure $structure, Role $role)
     {
         $this->user = $user;
         $this->structure = $structure;
         $this->role = $role;
+        $this->invitedTo = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,5 +71,32 @@ class Scope
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getInvitedTo(): Collection
+    {
+        return $this->invitedTo;
+    }
+
+    public function addInvitedTo(Event $invitedTo): self
+    {
+        if (!$this->invitedTo->contains($invitedTo)) {
+            $this->invitedTo[] = $invitedTo;
+            $invitedTo->addInvitedScope($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvitedTo(Event $invitedTo): self
+    {
+        if ($this->invitedTo->removeElement($invitedTo)) {
+            $invitedTo->removeInvitedScope($this);
+        }
+
+        return $this;
     }
 }
