@@ -22,11 +22,12 @@ class Scope
     #[ORM\ManyToOne(targetEntity: Structure::class)]
     private Structure $structure;
 
-    #[ORM\ManyToOne(targetEntity: Role::class)]
-    private Role $role;
 
     #[ORM\Column(type: 'boolean')]
     private bool $active = true;
+
+    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'scopes')]
+    private $role;
 
     #[Pure] public function __construct(User $user, Structure $structure, Role $role)
     {
@@ -65,5 +66,12 @@ class Scope
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
     }
 }
