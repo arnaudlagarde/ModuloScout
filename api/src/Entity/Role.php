@@ -31,16 +31,16 @@ class Role
     private AgeSection $ageSection;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    private $icon;
+    private ?string $icon;
 
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'roles')]
-    private $categories;
+    private ArrayCollection $categories;
 
     #[ORM\OneToMany(mappedBy: 'role', targetEntity: Scope::class)]
-    private $scopes;
+    private ArrayCollection $scopes;
 
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'invitedRoles')]
-    private $defaultCategories;
+    private ArrayCollection $defaultCategories;
 
     #[Pure] public function __construct(string $name, string $code, AgeSection $ageSection, ?string $feminineName = null)
     {

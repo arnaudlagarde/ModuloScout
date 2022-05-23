@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource]
@@ -15,24 +16,24 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $description;
+    private ?string $description;
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'categories')]
-    private $roles;
+    private ArrayCollection $roles;
 
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'categories')]
-    private $events;
+    private ArrayCollection $events;
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'defaultCategories')]
-    private $invitedRoles;
+    private ArrayCollection $invitedRoles;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->roles = new ArrayCollection();
         $this->events = new ArrayCollection();

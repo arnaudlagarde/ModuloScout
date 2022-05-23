@@ -27,7 +27,7 @@ class Scope
     private bool $active = true;
 
     #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'scopes')]
-    private $role;
+    private Role $role;
 
     #[Pure] public function __construct(User $user, Structure $structure, Role $role)
     {

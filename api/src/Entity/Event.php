@@ -7,6 +7,7 @@ use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 #[ApiResource]
@@ -15,21 +16,21 @@ class Event
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'text')]
-    private $description;
+    private ?string $description;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'events')]
-    private $participants;
+    private ArrayCollection $participants;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'events')]
-    private $categories;
+    private ArrayCollection $categories;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->participants = new ArrayCollection();
         $this->categories = new ArrayCollection();
