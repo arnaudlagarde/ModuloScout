@@ -25,13 +25,13 @@ class Category
     private ?string $description;
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'categories')]
-    private ArrayCollection $roles;
+    private Collection $roles;
 
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'categories')]
-    private ArrayCollection $events;
+    private Collection $events;
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'defaultCategories')]
-    private ArrayCollection $invitedRoles;
+    private Collection $invitedRoles;
 
     #[Pure] public function __construct()
     {

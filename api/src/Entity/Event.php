@@ -25,10 +25,10 @@ class Event
     private ?string $description;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'events')]
-    private ArrayCollection $participants;
+    private Collection $participants;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'events')]
-    private ArrayCollection $categories;
+    private Collection $categories;
 
     #[Pure] public function __construct()
     {

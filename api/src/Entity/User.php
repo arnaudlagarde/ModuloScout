@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -43,9 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $genre;
 
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'participants')]
-    private ArrayCollection $events;
+    private Collection $events;
 
-    public function __construct(string $uuid, string $email, string $firstName, string $lastName, string $genre)
+    #[Pure] public function __construct(string $uuid, string $email, string $firstName, string $lastName, string $genre)
     {
         $this->uuid = $uuid;
         $this->email = $email;
