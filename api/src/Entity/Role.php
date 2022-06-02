@@ -39,9 +39,6 @@ class Role
     #[ORM\OneToMany(mappedBy: 'role', targetEntity: Scope::class)]
     private Collection $scopes;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'invitedRoles')]
-    private Collection $defaultCategories;
-
     #[Pure] public function __construct(string $name, string $code, AgeSection $ageSection, ?string $feminineName = null)
     {
         $this->name = $name;

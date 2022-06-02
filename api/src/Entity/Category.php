@@ -30,14 +30,10 @@ class Category
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'categories')]
     private Collection $events;
 
-    #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'defaultCategories')]
-    private Collection $invitedRoles;
-
     #[Pure] public function __construct()
     {
         $this->roles = new ArrayCollection();
         $this->events = new ArrayCollection();
-        $this->invitedRoles = new ArrayCollection();
     }
 
     public function getId(): ?int
