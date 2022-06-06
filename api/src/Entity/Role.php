@@ -36,6 +36,9 @@ class Role
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'roles')]
     private Collection $categories;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'invitedRoles')]
+    private Collection $defaultCategories;
+
     #[ORM\OneToMany(mappedBy: 'role', targetEntity: Scope::class)]
     private Collection $scopes;
 
@@ -127,7 +130,6 @@ class Role
     {
         if (!$this->categories->contains($category)) {
             $this->categories[] = $category;
-            $category->addRole($this);
         }
 
         return $this;
@@ -135,9 +137,7 @@ class Role
 
     public function removeCategory(Category $category): self
     {
-        if ($this->categories->removeElement($category)) {
-            $category->removeRole($this);
-        }
+        $this->categories->removeElement($category);
 
         return $this;
     }
@@ -184,6 +184,7 @@ class Role
     {
         if (!$this->defaultCategories->contains($defaultCategory)) {
             $this->defaultCategories[] = $defaultCategory;
+            $defaultCategory->addInvitedRole($this);
         }
 
         return $this;
@@ -191,7 +192,9 @@ class Role
 
     public function removeDefaultCategory(Category $defaultCategory): self
     {
-        $this->defaultCategories->removeElement($defaultCategory);
+        if ($this->defaultCategories->removeElement($defaultCategory)) {
+        $defaultCategory->removeInvitedRole($this);
+        }
 
         return $this;
     }

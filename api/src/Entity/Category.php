@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ApiResource]
@@ -27,6 +28,12 @@ class Category
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'categories')]
     private Collection $roles;
 
+    #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'defaultCategories')]
+    #[Assert\All([
+        new Assert\Expression(expression: 'value in this.getRoles().toArray()', message: 'category.invited_roles.expression'),
+    ])]
+    private Collection $invitedRoles;
+
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'categories')]
     private Collection $events;
 
@@ -34,6 +41,7 @@ class Category
     {
         $this->roles = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->invitedRoles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +85,7 @@ class Category
     {
         if (!$this->roles->contains($role)) {
             $this->roles[] = $role;
+            $role->addCategory($this);
         }
 
         return $this;
@@ -84,7 +93,9 @@ class Category
 
     public function removeRole(Role $role): self
     {
-        $this->roles->removeElement($role);
+       if ($this->roles->removeElement($role)){
+           $role->removeCategory($this);
+       }
 
         return $this;
     }
@@ -128,7 +139,6 @@ class Category
     {
         if (!$this->invitedRoles->contains($invitedRole)) {
             $this->invitedRoles[] = $invitedRole;
-            $invitedRole->addDefaultCategory($this);
         }
 
         return $this;
@@ -136,10 +146,14 @@ class Category
 
     public function removeInvitedRole(Role $invitedRole): self
     {
-        if ($this->invitedRoles->removeElement($invitedRole)) {
-            $invitedRole->removeDefaultCategory($this);
-        }
+        $this->invitedRoles->removeElement($invitedRole);
 
         return $this;
     }
+
+    public function getAllowedRoles(): array
+    {
+        return $this->roles->toArray();
+    }
+
 }
