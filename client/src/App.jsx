@@ -8,6 +8,7 @@ import ForgotPassword from './components/ForgotPassword';
 import ChoosePassword from './components/ChoosePassword';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Agenda from "./components/Agenda";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={IndexVisitor} />
+          <Route exact path="/agenda" component={Agenda} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/choosepassword" component={ChoosePassword} />

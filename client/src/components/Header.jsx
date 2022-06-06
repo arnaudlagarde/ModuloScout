@@ -17,7 +17,7 @@ function Header() {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Agenda</a>
+                            <NavLink className="nav-link" to="/agenda">Agenda</NavLink>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Documents</a>
