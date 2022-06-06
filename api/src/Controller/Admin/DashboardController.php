@@ -10,6 +10,7 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,13 +19,16 @@ class DashboardController extends AbstractDashboardController
     #[Route('/', name: 'admin')]
     public function index(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        $routeBuilder = $this->container->get(AdminUrlGenerator::class);
+        $url = $routeBuilder->setController(DashboardController::class)->generateUrl();
+
+        return $this->redirect($url);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('App');
+            ->setTitle('Modulo');
     }
 
     public function configureMenuItems(): iterable
