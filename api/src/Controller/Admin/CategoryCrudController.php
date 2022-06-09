@@ -32,8 +32,7 @@ class CategoryCrudController extends AbstractCrudController
         return [
             yield TextField::new('name', 'Nom'),
             yield TextField::new('description', 'Description'),
-            yield AssociationField::new('invitedRoles', 'Rôles invités par défaut'),
-            yield DateTimeField::new('createdAt', 'Créé le')
+            yield AssociationField::new('invitedRoles', 'Rôles invités par défaut')
                 ->hideOnForm()
         ];
     }

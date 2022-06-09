@@ -33,10 +33,7 @@ class ScopeCrudController extends AbstractCrudController
         return [
             yield AssociationField::new('user', 'Utilisateur'),
             yield AssociationField::new('structure', 'Structure'),
-            yield AssociationField::new('role', 'Rôle'),
-            yield DateTimeField::new('createdAt', 'Créé le')
-                ->hideOnForm(),
-            yield BooleanField::new('active', 'Actif'),
+            yield AssociationField::new('role', 'Rôle')
         ];
     }
 
