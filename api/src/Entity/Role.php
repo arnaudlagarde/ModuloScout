@@ -194,7 +194,7 @@ class Role
     public function removeDefaultCategory(Category $defaultCategory): self
     {
         if ($this->defaultCategories->removeElement($defaultCategory)) {
-        $defaultCategory->removeInvitedRole($this);
+            $defaultCategory->removeInvitedRole($this);
         }
 
         return $this;

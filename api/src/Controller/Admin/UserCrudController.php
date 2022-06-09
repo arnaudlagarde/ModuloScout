@@ -23,8 +23,7 @@ class UserCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Modifier un utilisateur')
             ->setPageTitle('detail', "Détails d'un utilisateur")
             ->setEntityLabelInSingular('un utilisateur')
-            ->setEntityLabelInPlural('des utilisateurs')
-            ;
+            ->setEntityLabelInPlural('des utilisateurs');
     }
 
     public function configureFields(string $pageName): iterable

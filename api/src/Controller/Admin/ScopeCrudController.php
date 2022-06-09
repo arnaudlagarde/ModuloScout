@@ -25,8 +25,7 @@ class ScopeCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Modifier un scope')
             ->setPageTitle('detail', "Détails d'une scope")
             ->setEntityLabelInSingular('une scope')
-            ->setEntityLabelInPlural('des scopes')
-            ;
+            ->setEntityLabelInPlural('des scopes');
     }
 
     public function configureFields(string $pageName): iterable

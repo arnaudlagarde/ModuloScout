@@ -24,8 +24,7 @@ class CategoryCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Modifier une catégorie')
             ->setPageTitle('detail', "Détails d'une catégorie")
             ->setEntityLabelInSingular('une catégorie')
-            ->setEntityLabelInPlural('des catégories')
-            ;
+            ->setEntityLabelInPlural('des catégories');
     }
 
     public function configureFields(string $pageName): iterable

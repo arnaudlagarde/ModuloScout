@@ -31,7 +31,7 @@ class Scope
 
     public function __toString()
     {
-        return $this->structure.' - '.$this->role;
+        return $this->structure . ' - ' . $this->role;
     }
 
     public function getId(): ?int
@@ -55,7 +55,7 @@ class Scope
     {
         return $this->structure;
     }
-    
+
     public function setStructure(?Structure $structure): self
     {
         $this->structure = $structure;

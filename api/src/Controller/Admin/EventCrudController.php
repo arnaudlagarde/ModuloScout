@@ -28,8 +28,7 @@ class EventCrudController extends AbstractCrudController
             ->setPageTitle('edit', 'Modifier un évènement')
             ->setPageTitle('detail', "Détails d'un évènement")
             ->setEntityLabelInSingular('un évènement')
-            ->setEntityLabelInPlural('des évènements')
-            ;
+            ->setEntityLabelInPlural('des évènements');
     }
 
     public function configureFields(string $pageName): iterable

@@ -98,9 +98,9 @@ class Category
 
     public function removeRole(Role $role): self
     {
-       if ($this->roles->removeElement($role)){
-           $role->removeCategory($this);
-       }
+        if ($this->roles->removeElement($role)) {
+            $role->removeCategory($this);
+        }
 
         return $this;
     }
