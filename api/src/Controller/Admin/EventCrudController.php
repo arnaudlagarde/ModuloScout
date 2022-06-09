@@ -35,13 +35,13 @@ class EventCrudController extends AbstractCrudController
     {
         return [
             yield TextField::new('name', 'Nom'),
-            yield TextareaField::new('description', 'Description'),
-            yield AssociationField::new('categories', 'Catégories'),
-            yield AssociationField::new('participants', 'Participants invités'),
-            yield DateTimeField::new('startDate', 'Date de début')->renderAsChoice(),
-            yield DateTimeField::new('endDate', 'Date de fin')->renderAsChoice(),
-            yield AssociationField::new('scope', 'Scope'),
-            yield BooleanField::new('active', 'Actif')
+            yield TextareaField::new('description', 'Description')
+
+            /* TO ADD
+                yield AssociationField::new('categories', 'Catégories'),
+                yield AssociationField::new('participants', 'Participants invités'),
+                yield TextareaField::new('description', 'Description'),
+            */
         ];
     }
 }
