@@ -46,16 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Event::class, mappedBy: 'participants')]
     private Collection $events;
 
-    #[Pure] public function __construct(string $uuid, string $email, string $firstName, string $lastName, string $genre)
-    {
-        $this->uuid = $uuid;
-        $this->email = $email;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->genre = $genre;
-        $this->events = new ArrayCollection();
-    }
-
     public function __toString(): string
     {
         return $this->getFullName();
@@ -91,6 +81,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->uuid;
+    }
+
+    public function setUuid(?string $uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
     }
 
     /**
