@@ -42,12 +42,8 @@ class Role
     #[ORM\OneToMany(mappedBy: 'role', targetEntity: Scope::class)]
     private Collection $scopes;
 
-    #[Pure] public function __construct(string $name, string $code, AgeSection $ageSection, ?string $feminineName = null)
+    #[Pure] public function __construct()
     {
-        $this->name = $name;
-        $this->code = $code;
-        $this->feminineName = $feminineName;
-        $this->ageSection = $ageSection;
         $this->categories = new ArrayCollection();
         $this->scopes = new ArrayCollection();
         $this->defaultCategories = new ArrayCollection();
