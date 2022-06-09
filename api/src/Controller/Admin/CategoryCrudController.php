@@ -31,10 +31,10 @@ class CategoryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'Nom'),
-            TextField::new('description', 'Description'),
-            AssociationField::new('invitedRoles', 'Rôles invités par défaut'),
-            DateTimeField::new('createdAt', 'Créé le')
+            yield TextField::new('name', 'Nom'),
+            yield TextField::new('description', 'Description'),
+            yield AssociationField::new('invitedRoles', 'Rôles invités par défaut'),
+            yield DateTimeField::new('createdAt', 'Créé le')
                 ->hideOnForm()
         ];
     }

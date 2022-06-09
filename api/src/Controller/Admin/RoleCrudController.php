@@ -33,15 +33,15 @@ class RoleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'Nom'),
-            TextareaField::new('description', 'Description'),
-            AssociationField::new('categories', 'Catégories'),
-            AssociationField::new('participants', 'Participants invités'),
-            DateTimeField::new('startDate', 'Date de début')->renderAsChoice(),
-            DateTimeField::new('endDate', 'Date de fin')->renderAsChoice(),
-            AssociationField::new('scope', 'Scope'),
-            BooleanField::new('active', 'Actif'),
-            DateTimeField::new('createdAt', 'Créé le')
+            yield TextField::new('name', 'Nom'),
+            yield TextareaField::new('description', 'Description'),
+            yield AssociationField::new('categories', 'Catégories'),
+            yield AssociationField::new('participants', 'Participants invités'),
+            yield DateTimeField::new('startDate', 'Date de début')->renderAsChoice(),
+            yield DateTimeField::new('endDate', 'Date de fin')->renderAsChoice(),
+            yield AssociationField::new('scope', 'Scope'),
+            yield BooleanField::new('active', 'Actif'),
+            yield DateTimeField::new('createdAt', 'Créé le')
                 ->hideOnForm()
         ];
     }

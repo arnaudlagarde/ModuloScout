@@ -8,7 +8,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 
 class ScopeCrudController extends AbstractCrudController
@@ -33,12 +32,12 @@ class ScopeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('user', 'Utilisateur'),
-            AssociationField::new('structure', 'Structure'),
-            AssociationField::new('role', 'Rôle'),
-            DateTimeField::new('createdAt', 'Créé le')
+            yield AssociationField::new('user', 'Utilisateur'),
+            yield AssociationField::new('structure', 'Structure'),
+            yield AssociationField::new('role', 'Rôle'),
+            yield DateTimeField::new('createdAt', 'Créé le')
                 ->hideOnForm(),
-            BooleanField::new('active', 'Actif'),
+            yield BooleanField::new('active', 'Actif'),
         ];
     }
 
