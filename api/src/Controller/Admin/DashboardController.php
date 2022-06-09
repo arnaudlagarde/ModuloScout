@@ -18,12 +18,9 @@ class DashboardController extends AbstractDashboardController
 {
     #[Route('/', name: 'admin')]
     public function index(): Response
-    {
-        $routeBuilder = $this->container->get(AdminUrlGenerator::class);
-        $url = $routeBuilder->setController(DashboardController::class)->generateUrl();
-
-        return $this->redirect($url);
-    }
+     {
+         return $this->render('admin/dashboard.html.twig');
+     }
 
     public function configureDashboard(): Dashboard
     {
@@ -36,8 +33,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Scopes', 'fas fa-users-cog', Scope::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list-ul', Category::class);
-        yield MenuItem::linkToCrud('Rôles', 'fas fa-user-tag', Role::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
         yield MenuItem::linkToCrud('Évènements', 'fas fa-calendar-alt', Event::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Rôles', 'fas fa-user-gear', Role::class);
     }
 }
