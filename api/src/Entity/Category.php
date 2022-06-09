@@ -30,7 +30,7 @@ class Category
 
     #[ORM\ManyToMany(targetEntity: Role::class, inversedBy: 'defaultCategories')]
     #[Assert\All([
-        new Assert\Expression(expression: 'value in this.getRoles().toArray()', message: 'category.invited_roles.expression'),
+        new Assert\Expression(expression: 'value in this.getRoles().toArray()', message: "Certains rôles n'autorisent pas cette catégorie."),
     ])]
     private Collection $invitedRoles;
 
@@ -42,6 +42,11 @@ class Category
         $this->roles = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->invitedRoles = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
