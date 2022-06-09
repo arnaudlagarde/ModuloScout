@@ -35,14 +35,14 @@ class EventCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', 'event.name'),
-            TextareaField::new('description', 'event.description'),
-            AssociationField::new('categories', 'event.categories'),
-            AssociationField::new('participants', 'event.participants'),
-            DateTimeField::new('startDate', 'event.start_date')->renderAsChoice(),
-            DateTimeField::new('endDate', 'event.end_date')->renderAsChoice(),
-            AssociationField::new('scope', 'event.scope'),
-            BooleanField::new('active', 'event.active')
+            TextField::new('name', 'Nom'),
+            TextareaField::new('description', 'Description'),
+            AssociationField::new('categories', 'Catégories'),
+            AssociationField::new('participants', 'Participants invités'),
+            DateTimeField::new('startDate', 'Date de début')->renderAsChoice(),
+            DateTimeField::new('endDate', 'Date de fin')->renderAsChoice(),
+            AssociationField::new('scope', 'Scope'),
+            BooleanField::new('active', 'Actif')
         ];
     }
 
