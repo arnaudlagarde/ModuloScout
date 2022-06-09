@@ -29,13 +29,6 @@ class Scope
     #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'scopes')]
     private Role $role;
 
-    #[Pure] public function __construct(User $user, Structure $structure, Role $role)
-    {
-        $this->user = $user;
-        $this->structure = $structure;
-        $this->role = $role;
-    }
-
     public function __toString()
     {
         return $this->structure.' - '.$this->role;
@@ -46,6 +39,13 @@ class Scope
         return $this->id;
     }
 
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     public function getUser(): User
     {
         return $this->user;
@@ -54,6 +54,13 @@ class Scope
     public function getStructure(): Structure
     {
         return $this->structure;
+    }
+    
+    public function setStructure(?Structure $structure): self
+    {
+        $this->structure = $structure;
+
+        return $this;
     }
 
     public function getRole(): Role
